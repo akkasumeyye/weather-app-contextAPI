@@ -1,0 +1,62 @@
+.search-city{
+    display: flex;
+    width: 100%;
+}
+
+.cityName{
+    width: 70%;
+}
+
+h1{
+    color:var(--second-color);
+    text-transform: capitalize;
+    font-family: "Lora", serif;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+p{
+    font-size: large;
+    font-weight: 300;
+}
+
+form {
+    margin-top: 2rem;
+    display: flex;
+    width: max(60% , 15vw);
+    gap: 0.3rem;
+}
+
+button[type="submit"]{
+    padding: 0.8rem;
+    font-size: large;
+    border: none;
+    border-radius: 0.2rem;
+    color: #f7f2f2;
+    background-color: var(--second-color);
+    
+}
+
+button[type="submit"]:hover{
+  color: var(--second-color);
+  border: 1px solid var(--second-color);
+  background-color: #f4f6f6;
+}
+
+input[type="search"]{
+    border-radius: 4px;
+    font-size:larger;
+    border: 2px solid var(--second-color);
+    background-color:#f4f6f6
+}
+
+
+@media screen and (max-width:700px) {
+
+    .search-city{
+      display: inline-block;
+      justify-content: flex-end!important;
+    }  
+      
+}
+

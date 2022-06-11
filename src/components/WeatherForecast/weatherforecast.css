@@ -1,0 +1,21 @@
+.forecastContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2eaea;
+    color: var(--first-color);
+    border-radius: 1rem;
+    width: max(75% , 300px);
+    margin: 2rem auto;
+    
+}
+#day{
+    font-weight: bold;
+    color: var(--second-color);
+}
+li{
+    list-style: none;
+}

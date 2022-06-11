@@ -1,0 +1,51 @@
+.weatherBodyContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.weatherBody {
+  margin-right: 5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.weatherBody > div:nth-child(2) {
+  margin-top: 10vh;
+}
+
+.weatherCelcius {
+  font-family: "Lora", serif;
+  font-weight: 200;
+  font-size: 5rem;
+  color: var(--second-color);
+  margin-top: 5vh;
+  display: flex;
+  margin-left: 3vw;
+}
+#celcius {
+  margin-top: 2.2vh;
+  font-size: large;
+  font-weight: 700;
+}
+
+
+.weatherDesc p{
+  display: flex;
+  font-weight: bold;
+  margin-right: 2rem;
+}
+
+#icon p {
+  text-transform: capitalize;
+}
+
+@media (max-width: 500px){
+  #icon{
+      display: none;
+  }
+  .weatherCelcius {
+    margin-top: 0;
+  }
+  
+}
