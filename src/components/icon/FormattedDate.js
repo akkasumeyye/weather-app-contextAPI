@@ -1,4 +1,4 @@
-import React from "react";
+import React , {memo} from "react";
 import { useWeatherContext } from '../../Context/WeatherContext';
 
 
@@ -41,4 +41,4 @@ const FormattedDate = () => {
     return "loading";
   }
 }
-export default FormattedDate
+export default memo(FormattedDate);

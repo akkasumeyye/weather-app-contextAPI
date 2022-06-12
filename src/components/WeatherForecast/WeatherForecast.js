@@ -8,14 +8,12 @@ const WeatherForecast = () => {
   let [forecast, setForecast] = useState();
   let [loaded, setLoaded] = useState(false);
 
-  const {weather} = useWeatherContext();
+  const {lat , lon} = useWeatherContext();
 
 /* GETTING WEATHER DATA FOR 7 DAYS AND PUT INSIDE setForecast STATE */
 
-  const getDatafor7days = useCallback(async () => {
-    const lat = weather.lat;
-    const lon = weather.lon;
-    console.log(lat, lon);
+
+const getDatafor7days = useCallback(async () => {
     let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=b36651d81c662994fb027222b0885881&units=metric`;
     try {
       const data = await fetch(url).then((res) => res.json());
@@ -25,14 +23,12 @@ const WeatherForecast = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [weather.lat, weather.lon]);
+  }, [lat,lon]);
 
   useEffect(() => {
     getDatafor7days();
   }, [getDatafor7days]);
 
-  console.log(forecast);
-  console.log(loaded);
 
   return (
     <div className="forecastContainer">

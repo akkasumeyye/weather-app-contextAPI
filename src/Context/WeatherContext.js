@@ -1,11 +1,13 @@
 import axios from "axios";
-import React, { createContext, useContext, useState , useEffect, useCallback} from "react";
+import React, { createContext, useContext, useState , useEffect, useCallback , useMemo } from "react";
 
 const WeatherContext = createContext();
 
 const WeatherProvider = ({ children }) => {
   const [weather, setWeather] = useState({ ready: false });
-  const [location, setLocation] = useState("İstanbul");
+  const [location, setLocation] = useState("istanbul");
+  const [lat, setLat] = useState(41.0351);
+  const [lon, setLon] = useState(28.9833);
   
   const api_call = useCallback( async () => {
     
@@ -21,8 +23,6 @@ const WeatherProvider = ({ children }) => {
             minTemp: res.data.main.temp_min,
             maxTemp: res.data.main.temp_max,
             coordinates : res.data.coord,
-            lon: res.data.coord.lon,
-            lat: res.data.coord.lat,
             wind: res.data.wind.speed,
             date: new Date(res.data.dt * 1000),
             city: res.data.name,
@@ -31,6 +31,8 @@ const WeatherProvider = ({ children }) => {
             press: res.data.main.pressure,
   })
   setLocation(res.data.name)
+  setLat(res.data.coord.lat)
+  setLon(res.data.coord.lon)
   }, [location])
  
 useEffect(() => {
@@ -40,14 +42,16 @@ useEffect(() => {
 console.log(location)
 console.log(weather)
   
-  const contextValue = {
+  const contextValue =useMemo(() =>({
     api_call,
     weather,
     setWeather,
     location,
     setLocation,
+    lat,
+    lon,
    
-  };
+  }),[location , weather , api_call , lat, lon ]);
 
   return (
     <WeatherContext.Provider value={contextValue}>

@@ -5,10 +5,9 @@ import { useWeatherContext} from '../../Context/WeatherContext';
 import FormattedDate from '../icon/FormattedDate';
 
 
-
 const Search = () => {
   const [SearchedCity, setSearchedCity] = useState(" ");
-  const {location,setLocation} = useWeatherContext();
+  const {weather,location,setLocation} = useWeatherContext();
   
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +18,7 @@ const handleSubmit = (e) => {
       <div className="search-city">
            {/*SHOWING CITY NAME AND ITS CURRENT DATE WHİCH IS FORMATTED*/}
         <div className="cityName">
-          <h1>{location}</h1>
+          <h1>{!location.includes(weather.city) ? "istanbul" : location}</h1>
             <FormattedDate/>
         </div>
         <div>
